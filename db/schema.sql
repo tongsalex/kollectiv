@@ -1,0 +1,44 @@
+DROP TABLE IF EXISTS songs_mixes;
+DROP TABLE IF EXISTS events;
+DROP TABLE IF EXISTS blog_posts;
+DROP TABLE IF EXISTS artists;
+
+CREATE TABLE artists (
+  artist_id SERIAL PRIMARY KEY,
+  username VARCHAR NOT NULL UNIQUE,
+  password VARCHAR NOT NULL,
+  bio TEXT,
+  email VARCHAR NOT NULL UNIQUE,
+  age INT NOT NULL,
+  gender VARCHAR NOT NULL,
+  date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(2)
+);
+
+CREATE TABLE blog_posts (
+  blog_post_id SERIAL PRIMARY KEY,
+  title VARCHAR NOT NULL,
+  content TEXT NOT NULL,
+  image TEXT NOT NULL,
+  artist_id INT REFERENCES artists ON DELETE CASCADE,
+  date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(2)
+);
+
+CREATE TABLE events (
+  event_id SERIAL PRIMARY KEY,
+  title VARCHAR NOT NULL,
+  description TEXT NOT NULL,
+  image TEXT NOT NULL,
+  artist_id INT REFERENCES artists ON DELETE CASCADE,
+  date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(2)
+);
+
+CREATE TABLE songs_mixes (
+  song_mix_id SERIAL PRIMARY KEY,
+  title VARCHAR NOT NULL,
+  song_link TEXT NOT NULL,
+  artist_id INT REFERENCES artists ON DELETE CASCADE,
+  date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(2)
+);
+
+
+

@@ -1,6 +1,6 @@
 # thecollektive
 ## Concept
-For some time now, I've been wanting to start a musical collective/brand of NYC DJs/Music Producers with a common interest in sharing their work and throwing recurring awesome underground dance parties in the NYC area without the superficial bullshit and high fees involved at local clubs. Just great music, good parties, a thriving bumping community, and the chance for local artists to share their work/gigs with local music lovers desperate to find new music and a great time. In addition to sharing their work/gigs, I also wanted to allow each artist to have their own personal blog which would feed into a larger blog for the entire website which could be about almost anything but primarily focus on music, whether they be album reviews, artist recommendations, reviews of the vast collection of venues in NYC, djing tips, production tips, anything related to music!!!
+For some time now, I've been wanting to start a musical collective/brand of NYC DJs/Music Producers with a common interest in sharing their work and throwing recurring awesome underground dance parties in the NYC area without the superficial environment and high fees involved at local clubs. Just great music, good parties, a thriving bumping community, and the chance for local artists to share their work/gigs with local music lovers desperate to find new music and a great time. In addition to sharing their work/gigs, I also wanted to allow each artist to have their own personal blog which would feed into a larger blog for the entire website which could be about almost anything but primarily focus on music, whether they be album reviews, artist recommendations, reviews of the vast collection of venues in NYC, djing tips, production tips, anything related to music!!!
 
 ## Technology
 - HTML
@@ -21,9 +21,12 @@ Artists will have a login, and will be able to post/modify the content that will
 - gig info
 
 ### Wireframes
-🍲🍔 In progress 🍔🍲 
+🍔 In progress 🍔
 
-### Time Table 
+### ERD
+🍔 In progress 🍔
+
+### Project Time Frame Given: 12/6-12/15
 #### 12/6-12/8
 Awaiting approval.
 Drawing up wireframes and thinking of UX design choices.
@@ -51,3 +54,8 @@ Checking media queries and ways to break the site with reloads, back loads, fron
 - Learning react-router
 - Learning JSON Web Token implementation for artists.
 - Good CSS design
+
+### Sources
+- Scripts/Webpack = Jason Seminara for General Assembly
+- Taken from General Assembly template for user auth project 2.
+

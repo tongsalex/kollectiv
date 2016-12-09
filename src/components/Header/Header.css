@@ -1,0 +1,39 @@
+#header-container {
+  display: flex;
+  justify-content: center;
+  width: 100vw;
+  height: auto;
+  background-color: #FFFFFF;
+}
+
+#sub-header-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  width: 100vw;
+  height: 25vh;
+  background-color: #FFFFFF;
+  color: #111111;
+  flex-wrap: wrap;
+
+  border-bottom: 1px solid #DDDDDD;
+}
+
+  #header-title {
+    font-family: 'Signerica_Thin';
+    font-size: 8vh;
+    width: 60vw;
+    height: 9vh;
+    text-align: center;
+    margin: 0;
+  }
+
+  #header-subtitle {
+    width: 60vw;
+    text-align: center;
+    height: 3vh;
+    font-size: 2vh;
+
+  }
+

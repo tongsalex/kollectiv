@@ -8,7 +8,7 @@ const BUILD_DIR = path.resolve(__dirname, 'dist');
 const APP_DIR = path.resolve(__dirname, 'src');
 
 module.exports = {
-  entry: `${APP_DIR}/index.js`,
+  entry: `${APP_DIR}/index.jsx`,
   output: {
     path: BUILD_DIR,
     filename: '/js/[name].js',
@@ -19,6 +19,9 @@ module.exports = {
   stats: {
     colors: true,
     reasons: true
+  },
+  resolve: {
+    extensions: ['', '.js', '.jsx'],
   },
   plugins: [
     new HtmlWebpackPlugin({
@@ -66,6 +69,10 @@ module.exports = {
       },
       {
         test: /\.otf(\?v=\d+\.\d+\.\d+)?$/,
+        loader: 'file-loader?name=/fonts/[name].[ext]'
+      },
+      {
+        test: /\.(eot|svg|ttf|woff|woff2)$/,
         loader: 'file-loader?name=/fonts/[name].[ext]'
       }
     ]
