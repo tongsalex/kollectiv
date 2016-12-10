@@ -12,7 +12,6 @@ function listArtists(req, res, next) {
     });
 }
 
-
 module.exports = {
   listArtists,
 };
