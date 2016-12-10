@@ -1,10 +1,12 @@
-const express = require('express');
-const { listArtists } = require('../../models/artist.js');
+const artistRoute = require('express').Router();
+const { createUser, authenticate } = require('../../models/user.js');
 
-const artistRoute = express.Router();
-const sendJSONresp = (req, res) => res.json(res.artists || []);
+const sendJSONresp = (req, res) => res.json();
 
-artistRoute.route('/')
-   .get(listArtists, sendJSONresp);
+artistRoute.route('/signup')
+  .post(createUser);
+
+artistRoute.route('/login')
+  .post(authenticate);
 
 module.exports = artistRoute;

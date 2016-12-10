@@ -8,10 +8,10 @@ CREATE TABLE artists (
   username VARCHAR NOT NULL UNIQUE,
   password VARCHAR NOT NULL,
   bio TEXT,
-  email VARCHAR NOT NULL UNIQUE,
-  age INT NOT NULL,
-  gender VARCHAR NOT NULL,
-  date_created TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP(2)
+  email VARCHAR UNIQUE,
+  age INT,
+  gender VARCHAR,
+  date_created TIMESTAMP DEFAULT CURRENT_TIMESTAMP(2)
 );
 
 CREATE TABLE blog_posts (

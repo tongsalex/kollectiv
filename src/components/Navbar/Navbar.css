@@ -31,6 +31,11 @@
       height: 5vh;
       /*border: .1px solid black;*/
       background-color: #FFFFFF;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-decoration: none;
+      color: #111111;
     }
 
     .button:hover {
