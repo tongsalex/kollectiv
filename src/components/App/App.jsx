@@ -21,13 +21,13 @@ class App extends Component {
         username: '',
         password: '',
       },
-
+      blogPosts: [],
     };
   }
 
-// GLOBAL FUNCTIONS
+// GLOBAL FUNCTIONS //
   componentDidMount() {
-    // this.getAllBlogPosts();
+    this.getAllBlogPosts();
   }
 
   alertInfo(msg) {
@@ -35,26 +35,28 @@ class App extends Component {
   }
 // ************************************* //
 
-// SIDEBAR FUNCTIONS
+// SIDEBAR FUNCTIONS //
   signup() {
     fetch('/api/artist/signup', {
-      method: 'POST',
       headers: {
         'content-type': 'application/json',
       },
+      method: 'POST',
       body: JSON.stringify({
         username: this.state.signup.username,
         password: this.state.signup.password,
       }),
     })
-    .then((data) => {
+    .then(() => {
       this.setState({
         signup: {
           username: '',
           password: '',
         },
       });
-    });
+    })
+    .then(this.alertInfo('Signed up!'))
+    .catch(err => console.log(err));
   }
 
   login() {
@@ -79,7 +81,7 @@ class App extends Component {
         },
       });
     })
-    .then(this.alertInfo('Youre logged in'))
+    .then(this.alertInfo('Logged in'))
     .catch(err => console.log(err));
   }
 
@@ -111,6 +113,24 @@ class App extends Component {
   }
 // ************************************* //
 
+// BLOG FUNCTIONS //
+  getAllBlogPosts() {
+    fetch('/api/blog', {
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'GET',
+    })
+    .then(r => r.json())
+    .then((data) => {
+      this.setState({
+        blogPosts: data,
+      });
+    })
+    .catch(err => console.log(err));
+  }
+// ************************************* //
+
   render() {
     return (
       <div id="app-container">
@@ -133,7 +153,9 @@ class App extends Component {
         />
         <Header />
         <Navbar />
-        {this.props.children}
+        {this.props.children && React.cloneElement(this.props.children, {
+          state: this.state,
+        })}
         <Footer />
       </div>
     );

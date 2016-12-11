@@ -15,10 +15,8 @@ function createUser(req, res, next) {
 }
 
 function authenticate(req, res, next) {
-  // console.log(req.body.password);
   db.one('SELECT * FROM artists WHERE username = $/username/;', req.body)
     .then((data) => {
-      // console.log(data.password);
       const match = bcrypt.compareSync(req.body.password, data.password);
       if (match) {
         const myToken = jwt.sign({ username: req.body.username }, process.env.SECRET);

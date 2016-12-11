@@ -1,2 +1,3 @@
 {this.props.children && React.cloneElement(this.props.children, {
-        state: this.state })}
+          state: this.state,
+        })}
