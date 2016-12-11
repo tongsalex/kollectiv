@@ -1,0 +1,22 @@
+#app-container {
+  display: flex;
+  height: 100vh;
+  overflow: scroll;
+}
+
+#app-left-sub-container {
+  display: none;
+}
+
+.closed {
+  width: 0;
+}
+
+.open {
+  width: 50vw;
+}
+
+#app-right-sub-container {
+  width: 100vw;
+  overflow-x: hidden;
+}

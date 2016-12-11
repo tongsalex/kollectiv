@@ -1,0 +1,3 @@
+ <div id="navbar-search-container">
+      <img src={require('./search.png')} alt="search" id="navbar-search" />
+    </div>

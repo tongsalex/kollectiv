@@ -13,6 +13,7 @@ class App extends Component {
     super();
     this.state = {
       currentToken: '',
+      isAuthenticated: false,
       signup: {
         username: '',
         password: '',
@@ -22,6 +23,8 @@ class App extends Component {
         password: '',
       },
       blogPosts: [],
+
+      sidebarHidden: false,
     };
   }
 
@@ -33,9 +36,28 @@ class App extends Component {
   alertInfo(msg) {
     alert(msg);
   }
+
+  successfulLogin() {
+    this.setState({
+      isAuthenticated: true,
+    });
+  }
+
+  toggleSidebar() {
+    document.getElementById('app-left-sub-container').classList.toggle('open');
+    // document.getElementById('app-left-sub-container').classList.toggle('closed');
+  }
+
 // ************************************* //
 
 // SIDEBAR FUNCTIONS //
+  sidebarState() {
+    if (this.state.sidebarHidden === false) {
+      return 'sidebar-hidden';
+    }
+    return 'sidebar-show';
+  }
+
   signup() {
     fetch('/api/artist/signup', {
       headers: {
@@ -81,7 +103,7 @@ class App extends Component {
         },
       });
     })
-    .then(this.alertInfo('Logged in'))
+    // .then(event => this.successfulLogin(event))
     .catch(err => console.log(err));
   }
 
@@ -143,20 +165,28 @@ class App extends Component {
           rel="stylesheet"
         />
 
-        <Sidebar
-          loginUsername={this.state.login.username}
-          updateLoginUsername={event => this.updateLoginUsername(event)}
-          loginPassword={this.state.login.password}
-          updateLoginPassword={event => this.updateLoginPassword(event)}
-          login={event => this.login(event)}
-          logout={event => this.logout(event)}
-        />
-        <Header />
-        <Navbar />
-        {this.props.children && React.cloneElement(this.props.children, {
-          state: this.state,
-        })}
-        <Footer />
+        <div id="app-left-sub-container">
+          <Sidebar
+            loginUsername={this.state.login.username}
+            updateLoginUsername={event => this.updateLoginUsername(event)}
+            loginPassword={this.state.login.password}
+            updateLoginPassword={event => this.updateLoginPassword(event)}
+            login={event => this.login(event)}
+            logout={event => this.logout(event)}
+
+            sidebarState={event => this.sidebarState(event)}
+            isAuthenticated={this.state.isAuthenticated}
+          />
+        </div>
+
+        <div id="app-right-sub-container">
+          <Header />
+          <Navbar toggleSidebar={event => this.toggleSidebar(event)} />
+          {this.props.children && React.cloneElement(this.props.children, {
+            state: this.state,
+          })}
+          <Footer />
+        </div>
       </div>
     );
   }
