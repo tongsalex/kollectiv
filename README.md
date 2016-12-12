@@ -24,7 +24,7 @@ Artists will have a login, and will be able to post/modify the content that will
 ![wireframe](./media/wireframe.png "Wireframe")
 
 ### ERD
-🍔 In progress 🍔
+![erd](./media/erd.png "ERD")
 
 ### Project Time Frame Given: 12/6-12/15
 #### 12/6-12/8
