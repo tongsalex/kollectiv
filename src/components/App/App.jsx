@@ -13,6 +13,9 @@ class App extends Component {
     super();
     this.state = {
       currentToken: '',
+      currentUser: '',
+      // isAuthenticated: false,
+
       signup: {
         username: '',
         password: '',
@@ -22,8 +25,19 @@ class App extends Component {
         password: '',
       },
       blogPosts: [],
+
+      accountInfo: {
+        first_name: '',
+        last_name: '',
+        bio: '',
+        email: '',
+        date_created: '',
+      },
+
+      sidebarHidden: false,
     };
   }
+// ************************************* //
 
 // GLOBAL FUNCTIONS //
   componentDidMount() {
@@ -33,11 +47,63 @@ class App extends Component {
   alertInfo(msg) {
     alert(msg);
   }
+
+  successfulLogin() {
+    this.setState({
+      isAuthenticated: true,
+    });
+  }
+
+  toggleSidebar() {
+    document.getElementById('app-left-sub-container').classList.toggle('open');
+    // document.getElementById('app-left-sub-container').classList.toggle('closed');
+  }
+// ************************************* //
+
+// USER DATA FUNCTIONS //
+  loadAccountInfo() {
+    fetch(`/api/account/${this.state.currentUser}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.currentToken,
+      },
+      method: 'GET',
+    })
+    .then(r => r.json())
+    .then((data) => {
+      this.setState({
+        accountInfo: data,
+      });
+    })
+    .catch(err => console.log(err));
+  }
+
+  // submitEditedComment(id) {
+  //   fetch(`api/comment/${id}`, {
+  //     headers: {
+  //       'Content-Type': 'application/json',
+  //     },
+  //     method: 'PUT',
+  //     body: JSON.stringify({
+  //       body: this.state.currentComment,
+  //     }),
+  //   })
+  //   .then(r => r.json())
+  //   .then(this.alertInfo('Comment edited!'))
+  //   .catch(err => console.log(err));
+  // }
 // ************************************* //
 
 // SIDEBAR FUNCTIONS //
+  sidebarState() {
+    if (this.state.sidebarHidden === false) {
+      return 'sidebar-hidden';
+    }
+    return 'sidebar-show';
+  }
+
   signup() {
-    fetch('/api/artist/signup', {
+    fetch('/api/user/signup', {
       headers: {
         'content-type': 'application/json',
       },
@@ -61,7 +127,7 @@ class App extends Component {
 
   login() {
     console.log('im logging in');
-    fetch('/api/artist/login', {
+    fetch('/api/user/login', {
       headers: {
         'Content-Type': 'application/json',
       },
@@ -75,13 +141,14 @@ class App extends Component {
     .then((data) => {
       this.setState({
         currentToken: data,
+        currentUser: this.state.login.username,
         login: {
           username: '',
           password: '',
         },
       });
     })
-    .then(this.alertInfo('Logged in'))
+    .then(event => this.loadAccountInfo(event))
     .catch(err => console.log(err));
   }
 
@@ -94,20 +161,30 @@ class App extends Component {
     this.alertInfo('Youre logged out!');
   }
 
-  updateLoginUsername(event) {
-    this.setState({
-      login: {
-        username: event.target.value,
-        password: this.state.login.password,
-      },
-    });
-  }
+  // updateLoginUsername(event) {
+  //   this.setState({
+  //     login: {
+  //       username: event.target.value,
+  //       password: this.state.login.password,
+  //     },
+  //   });
+  // }
 
-  updateLoginPassword(event) {
+  // updateLoginPassword(event) {
+  //   this.setState({
+  //     login: {
+  //       username: this.state.login.username,
+  //       password: event.target.value,
+  //     },
+  //   });
+  // }
+
+  updateLogin(event) {
+    let array = event.target.parentElement.childNodes;
     this.setState({
       login: {
-        username: this.state.login.username,
-        password: event.target.value,
+        username: array[0].value,
+        password: array[1].value,
       },
     });
   }
@@ -143,20 +220,28 @@ class App extends Component {
           rel="stylesheet"
         />
 
-        <Sidebar
-          loginUsername={this.state.login.username}
-          updateLoginUsername={event => this.updateLoginUsername(event)}
-          loginPassword={this.state.login.password}
-          updateLoginPassword={event => this.updateLoginPassword(event)}
-          login={event => this.login(event)}
-          logout={event => this.logout(event)}
-        />
-        <Header />
-        <Navbar />
-        {this.props.children && React.cloneElement(this.props.children, {
-          state: this.state,
-        })}
-        <Footer />
+        <div id="app-left-sub-container">
+          <Sidebar
+            loginUsername={this.state.login.username}
+            updateLogin={event => this.updateLogin(event)}
+            loginPassword={this.state.login.password}
+            login={event => this.login(event)}
+            logout={event => this.logout(event)}
+
+            sidebarState={event => this.sidebarState(event)}
+            isAuthenticated={this.state.isAuthenticated}
+          />
+        </div>
+
+        <div id="app-right-sub-container">
+          <Header />
+
+          <Navbar toggleSidebar={event => this.toggleSidebar(event)} />
+          {this.props.children && React.cloneElement(this.props.children, {
+            state: this.state,
+          })}
+          <Footer />
+        </div>
       </div>
     );
   }

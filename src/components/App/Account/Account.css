@@ -1,0 +1,45 @@
+#account-container {
+  background-color: #FFFFFF;
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+  #left-sub-account-container {
+    width: 50vw;
+    height: 90%;
+    font-family: 'Inconsolata';
+    background-color: #FFFFFF;
+    color: #111111;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: space-around;
+  }
+
+    .account-buttons {
+      width: 80%;
+      height: 50px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      background-color: #FFFFFF;
+      text-decoration: none;
+      color: #111111;
+      border: 1px solid #111111;
+    }
+
+    .account-buttons:focus {
+      outline: none;
+    }
+
+  #right-sub-account-container {
+    width: 50vw;
+    height: 100%;
+    overflow: scroll;
+  }

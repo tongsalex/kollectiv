@@ -1,0 +1,18 @@
+#artists-container {
+  background-color: #FFFFFF;
+  width: 100vw;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-top: 1px solid #DDDDDD;
+  border-bottom: 1px solid #DDDDDD;
+}
+
+#sub-artists-container {
+  width: 60vw;
+  font-family: 'Inconsolata';
+  background-color: #FFFFFF;
+  color: #111111;
+  text-align: center;
+}

@@ -1,5 +1,21 @@
 #login-container {
-  width: auto;
-  height: 100px;
-  background-color: black;
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  background-color: #FFFFFF;
 }
+
+  #login-title {
+    width: 100%;
+    text-align: center;
+    font-family: 'Inconsolata';
+    color: #111111;
+  }
+
+  .login-input-containers {
+    width: 100%;
+    text-align: center;
+  }

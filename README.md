@@ -59,4 +59,5 @@ Checking media queries and ways to break the site with reloads, back loads, fron
 - Scripts/Webpack = Jason Seminara for General Assembly
 - Taken from General Assembly template for user auth project 2.
 - Daniel Pease's JWT-BCrypt Tutorial
+- https://github.com/balloob/react-sidebar
 
