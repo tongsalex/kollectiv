@@ -21,7 +21,7 @@ Artists will have a login, and will be able to post/modify the content that will
 - gig info
 
 ### Wireframes
-🍔 In progress 🍔
+![wireframe](./media/wireframe.png "Wireframe")
 
 ### ERD
 🍔 In progress 🍔
