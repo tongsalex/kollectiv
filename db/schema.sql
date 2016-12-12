@@ -6,9 +6,9 @@ DROP TABLE IF EXISTS artists;
 CREATE TABLE artists (
   artist_id SERIAL PRIMARY KEY,
   username VARCHAR NOT NULL UNIQUE,
+  password VARCHAR NOT NULL,
   first_name VARCHAR,
   last_name VARCHAR,
-  password VARCHAR NOT NULL,
   bio TEXT,
   email VARCHAR UNIQUE,
   date_created TIMESTAMP DEFAULT CURRENT_DATE
