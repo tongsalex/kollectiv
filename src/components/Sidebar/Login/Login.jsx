@@ -14,7 +14,7 @@ const Login = props => (
         type="text"
         placeholder="Username"
         value={props.loginUsername}
-        onChange={props.updateLoginUsername}
+        onChange={props.updateLogin}
       />
     </div>
 
@@ -24,7 +24,7 @@ const Login = props => (
         type="text"
         placeholder="Password"
         value={props.loginPassword}
-        onChange={props.updateLoginPassword}
+        onChange={props.updateLogin}
       />
     </div>
 

@@ -1,12 +1,12 @@
-const artistRoute = require('express').Router();
+const userRoute = require('express').Router();
 const { createUser, authenticate } = require('../../models/user.js');
 
 const sendJSONresp = (req, res) => res.json();
 
-artistRoute.route('/signup')
+userRoute.route('/signup')
   .post(createUser);
 
-artistRoute.route('/login')
+userRoute.route('/login')
   .post(authenticate);
 
-module.exports = artistRoute;
+module.exports = userRoute;

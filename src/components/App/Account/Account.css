@@ -41,4 +41,5 @@
   #right-sub-account-container {
     width: 50vw;
     height: 100%;
+    overflow: scroll;
   }

@@ -5,16 +5,16 @@
 }
 
 #app-left-sub-container {
-  display: none;
+  width: 0;
 }
 
-.closed {
+/*.closed {
   width: 0;
 }
 
 .open {
-  width: 50vw;
-}
+  width: 20vw;
+}*/
 
 #app-right-sub-container {
   width: 100vw;

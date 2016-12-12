@@ -11,9 +11,8 @@ const Sidebar = props => (
 
     <Login
       loginUsername={props.loginUsername}
-      updateLoginUsername={props.updateLoginUsername}
       loginPassword={props.loginPassword}
-      updateLoginPassword={props.updateLoginPassword}
+      updateLogin={props.updateLogin}
       login={props.login}
       logout={props.logout}
     />

@@ -13,6 +13,7 @@ const Navbar = props => (
       <Link to="/contact" className="navbar-button">contact</Link>
       <Link to="/account" className="navbar-button">my account</Link>
     </div>
+
     <div id="navbar-social-media-container">
       <img src={require('./twitter.png')} alt="twitter" className="navbar-logos" id="twitter" />
       <img src={require('./instagram.png')} alt="instagram" className="navbar-logos" />

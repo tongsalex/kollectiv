@@ -8,6 +8,7 @@ import Artists from './components/App/Artists/Artists';
 import Contact from './components/App/Contact/Contact';
 import Account from './components/App/Account/Account';
   import Profile from './components/App/Account/Profile/Profile';
+  import AccountBlogPosts from './components/App/Account/AccountBlogPosts/AccountBlogPosts';
 
 ReactDOM.render((
   <Router history={hashHistory}>
@@ -18,6 +19,7 @@ ReactDOM.render((
       <Route path="/contact" component={Contact} />
       <Route path="/account" component={Account}>
         <Route path="/profile" component={Profile} />
+        <Route path="/blogposts" component={AccountBlogPosts} />
       </Route>
     </Route>
 

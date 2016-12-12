@@ -8,7 +8,7 @@ const Footer = props => (
     <div id="newsletter-signup-container">
       <p>newsletter signup</p>
       <input type="email" id="newsletter-signup-input" placeholder="email address" />
-      <button id="newsletter-signup-button">k</button>
+      <button id="newsletter-signup-button">ok</button>
     </div>
     <div id="sub-footer-container">
       <div className="footer-text">©KANGAROU 2016</div>

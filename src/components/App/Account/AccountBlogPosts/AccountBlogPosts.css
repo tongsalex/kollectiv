@@ -1,4 +1,4 @@
-#profile-container {
+#accountBlogPosts-container {
   width: 50vw;
   height: 90%;
   font-family: 'Inconsolata';
@@ -10,15 +10,7 @@
   align-content: space-around;
 }
 
-  .profile-titles {
+  .accountBlogPosts-titles {
     width: 100%;
     text-align: center;
-  }
-
-  .profile-inputs {
-    height: 40px;
-    font-size: 20px;
-    font-family: 'Inconsolata';
-    padding-left: 15px;
-    border: 1px solid #DDDDDD;
   }

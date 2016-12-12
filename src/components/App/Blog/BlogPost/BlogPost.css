@@ -11,17 +11,18 @@
 
   #blogpost-left-sub-container {
     width: 50vw;
-    height: 150px;
+    height: 200px;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    align-content: space-between;
+    align-content: space-around;
     align-items: center;
     font-family: 'Inconsolata';
+    /*background-color: black;*/
   }
 
     .blogpost-title {
-      font-size: 40px;
+      font-size: 60px;
       width: 100%;
       text-align: center;
     }
@@ -29,7 +30,7 @@
     .blogpost-sub-title {
       width: 100%;
       text-align: center;
-      font-size: 15px;
+      font-size: 20px;
     }
 
     .blogpost-button {
@@ -45,9 +46,12 @@
       color: #111111;
     }
 
+    .blogpost-button:focus {
+      outline: none;
+    }
+
   #blogpost-right-sub-container {
     width: 50vw;
-
     display: flex;
     justify-content: center;
     align-items: center;
