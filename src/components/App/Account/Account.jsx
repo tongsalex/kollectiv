@@ -8,11 +8,16 @@ const Account = props => (
         <div id="left-sub-account-container">
           <Link to="/profile" className="account-buttons">artist profile</Link>
           <Link to="/blogposts" className="account-buttons">blog posts</Link>
-          <Link to="/profile" className="account-buttons">event listings</Link>
         </div>
         <div id="right-sub-account-container">
           {props.children && React.cloneElement(props.children, {
             state: props.state,
+            updateProfileFirstName: props.updateProfileFirstName,
+            updateProfileLastName: props.updateProfileLastName,
+            updateProfileBio: props.updateProfileBio,
+            updateProfileEmail: props.updateProfileEmail,
+            updateProfile: props.updateProfile,
+            deleteBlogPost: props.deleteBlogPost,
           })}
         </div>
       </div>

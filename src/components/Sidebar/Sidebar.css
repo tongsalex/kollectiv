@@ -1,8 +1,19 @@
 #sidebar-container {
   width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
+  flex-wrap: wrap;
 }
 
-#sidebar-exit-button {
-  width: 100%;
-  height: 100px;
-}
+  #sidebar-button {
+    width: 60%;
+    height: initial;
+  }
+
+  #sidebar-button:focus {
+    outline: none;
+  }
+

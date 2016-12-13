@@ -1,16 +1,12 @@
 #accountBlogPosts-container {
-  width: 50vw;
-  height: 90%;
+  width: 80%;
+  height: 100%;
   font-family: 'Inconsolata';
   background-color: #FFFFFF;
   color: #111111;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  align-content: space-around;
+  align-items: center;
+  overflow: scroll;
 }
-
-  .accountBlogPosts-titles {
-    width: 100%;
-    text-align: center;
-  }

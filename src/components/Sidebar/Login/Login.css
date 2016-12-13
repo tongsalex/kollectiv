@@ -1,6 +1,6 @@
 #login-container {
   width: 100%;
-  height: 200px;
+  /*height: 200px;*/
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,9 +13,13 @@
     text-align: center;
     font-family: 'Inconsolata';
     color: #111111;
+    /*font-size: 1vw;*/
   }
 
-  .login-input-containers {
-    width: 100%;
-    text-align: center;
-  }
+    .login-inputs {
+      width: 60%;
+    }
+
+    #loginButton {
+      width: 60%;
+    }

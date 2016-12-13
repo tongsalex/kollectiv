@@ -5,28 +5,23 @@ import '../../reset.css';
 
 const Login = props => (
   <div id="login-container">
-
     <h1 id="login-title">login</h1>
 
-    <div className="login-input-containers">
-      <input
-        className="login-inputs"
-        type="text"
-        placeholder="Username"
-        value={props.loginUsername}
-        onChange={props.updateLogin}
-      />
-    </div>
+    <input
+      className="login-inputs"
+      type="text"
+      placeholder="Username"
+      value={props.loginUsername}
+      onChange={props.updateLoginUsername}
+    />
 
-    <div className="login-input-containers">
-      <input
-        className="login-inputs"
-        type="text"
-        placeholder="Password"
-        value={props.loginPassword}
-        onChange={props.updateLogin}
-      />
-    </div>
+    <input
+      className="login-inputs"
+      type="text"
+      placeholder="Password"
+      value={props.loginPassword}
+      onChange={props.updateLoginPassword}
+    />
 
     <button
       id="loginButton"

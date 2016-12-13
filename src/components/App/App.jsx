@@ -12,29 +12,39 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      // JWT //
       currentToken: '',
-      currentUser: '',
-      // isAuthenticated: false,
+      // ******************** //
 
-      signup: {
-        username: '',
-        password: '',
-      },
+      // LOGIN DATA //
+      currentUser: null,
       login: {
         username: '',
         password: '',
       },
-      blogPosts: [],
+      // *********** //
 
+      // GLOBAL DATA FROM DB //
+      blogPosts: [],
+      // ******************** //
+
+      // USER ACCOUNT DATA FROM DB //
       accountInfo: {
         first_name: '',
         last_name: '',
         bio: '',
         email: '',
-        date_created: '',
+        date: '',
+        artist_id: null,
+        username: null,
       },
+      accountBlogPosts: [],
+      // ******************** //
 
-      sidebarHidden: false,
+      // sidebar show/hide states //
+      appcontainer: 'app-right-sub-container',
+      sidebar: 'app-left-sub-container-hidden',
+      // ******************** //
     };
   }
 // ************************************* //
@@ -42,25 +52,20 @@ class App extends Component {
 // GLOBAL FUNCTIONS //
   componentDidMount() {
     this.getAllBlogPosts();
+    document.getElementById('soundcloud-player').style.visibility = 'hidden';
+    document.getElementById('soundcloud-player').style.opacity = 0;
   }
 
   alertInfo(msg) {
     alert(msg);
   }
-
-  successfulLogin() {
-    this.setState({
-      isAuthenticated: true,
-    });
-  }
-
-  toggleSidebar() {
-    document.getElementById('app-left-sub-container').classList.toggle('open');
-    // document.getElementById('app-left-sub-container').classList.toggle('closed');
-  }
 // ************************************* //
 
-// USER DATA FUNCTIONS //
+// USER ACCOUNT PROFILE FUNCTIONS //
+  showAccountNavbar() {
+    document.getElementById('navbar-account-button').style.visibility = 'visible';
+  }
+
   loadAccountInfo() {
     fetch(`/api/account/${this.state.currentUser}`, {
       headers: {
@@ -75,31 +80,131 @@ class App extends Component {
         accountInfo: data,
       });
     })
+    .then(event => this.getAccountBlogPosts(event))
     .catch(err => console.log(err));
   }
 
-  // submitEditedComment(id) {
-  //   fetch(`api/comment/${id}`, {
-  //     headers: {
-  //       'Content-Type': 'application/json',
-  //     },
-  //     method: 'PUT',
-  //     body: JSON.stringify({
-  //       body: this.state.currentComment,
-  //     }),
-  //   })
-  //   .then(r => r.json())
-  //   .then(this.alertInfo('Comment edited!'))
-  //   .catch(err => console.log(err));
-  // }
+  updateProfile() {
+    fetch(`/api/account/${this.state.currentUser}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.currentToken,
+      },
+      method: 'PUT',
+      body: JSON.stringify({
+        first_name: this.state.accountInfo.first_name,
+        last_name: this.state.accountInfo.last_name,
+        bio: this.state.accountInfo.bio,
+        email: this.state.accountInfo.email,
+      }),
+    })
+    .then(this.alertInfo('Account info edited!'))
+    .catch(err => console.log(err));
+  }
+
+  // UPDATE INPUT FUNCTIONS //
+    updateProfileFirstName(event) {
+      this.setState({
+        accountInfo: {
+          first_name: event.target.value,
+          last_name: this.state.accountInfo.last_name,
+          bio: this.state.accountInfo.bio,
+          email: this.state.accountInfo.email,
+          date: this.state.accountInfo.date,
+          artist_id: this.state.accountInfo.artist_id,
+          username: this.state.accountInfo.username,
+        },
+      });
+    }
+
+    updateProfileLastName(event) {
+      this.setState({
+        accountInfo: {
+          first_name: this.state.accountInfo.first_name,
+          last_name: event.target.value,
+          bio: this.state.accountInfo.bio,
+          email: this.state.accountInfo.email,
+          date: this.state.accountInfo.date,
+          artist_id: this.state.accountInfo.artist_id,
+          username: this.state.accountInfo.username,
+        },
+      });
+    }
+
+    updateProfileBio(event) {
+      this.setState({
+        accountInfo: {
+          first_name: this.state.accountInfo.first_name,
+          last_name: this.state.accountInfo.last_name,
+          bio: event.target.value,
+          email: this.state.accountInfo.email,
+          date: this.state.accountInfo.date,
+          artist_id: this.state.accountInfo.artist_id,
+          username: this.state.accountInfo.username,
+        },
+      });
+    }
+
+    updateProfileEmail(event) {
+      this.setState({
+        accountInfo: {
+          first_name: this.state.accountInfo.first_name,
+          last_name: this.state.accountInfo.last_name,
+          bio: this.state.accountInfo.bio,
+          email: event.target.value,
+          date: this.state.accountInfo.date,
+          artist_id: this.state.accountInfo.artist_id,
+          username: this.state.accountInfo.username,
+        },
+      });
+    }
+  // ************************************* //
+// ************************************* //
+
+// USER ACCOUNT BLOG FUNCTIONS //
+  getAccountBlogPosts() {
+    fetch(`/api/account/blogposts/${this.state.accountInfo.artist_id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.currentToken,
+      },
+      method: 'GET',
+    })
+    .then(r => r.json())
+    .then((data) => {
+      this.setState({
+        accountBlogPosts: data,
+      });
+    })
+    .catch(err => console.log(err));
+  }
+
+  deleteBlogPost(blogPostId) {
+    fetch(`/api/accountBlogPosts/${blogPostId}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.currentToken,
+      },
+      method: 'DELETE',
+    })
+    .then(event => this.getAccountBlogPosts(event))
+    .catch(err => console.log(err));
+  }
 // ************************************* //
 
 // SIDEBAR FUNCTIONS //
-  sidebarState() {
-    if (this.state.sidebarHidden === false) {
-      return 'sidebar-hidden';
-    }
-    return 'sidebar-show';
+  openSidebar() {
+    this.setState({
+      sidebar: 'app-left-sub-container-show',
+      appcontainer: 'app-right-sub-container-blur',
+    });
+  }
+
+  closeSidebar() {
+    this.setState({
+      sidebar: 'app-left-sub-container-hidden',
+      appcontainer: 'app-right-sub-container',
+    });
   }
 
   signup() {
@@ -149,6 +254,7 @@ class App extends Component {
       });
     })
     .then(event => this.loadAccountInfo(event))
+    .then(event => this.showAccountNavbar(event))
     .catch(err => console.log(err));
   }
 
@@ -161,33 +267,25 @@ class App extends Component {
     this.alertInfo('Youre logged out!');
   }
 
-  // updateLoginUsername(event) {
-  //   this.setState({
-  //     login: {
-  //       username: event.target.value,
-  //       password: this.state.login.password,
-  //     },
-  //   });
-  // }
+  // UPDATE INPUT FUNCTIONS //
+    updateLoginUsername(event) {
+      this.setState({
+        login: {
+          username: event.target.value,
+          password: this.state.login.password,
+        },
+      });
+    }
 
-  // updateLoginPassword(event) {
-  //   this.setState({
-  //     login: {
-  //       username: this.state.login.username,
-  //       password: event.target.value,
-  //     },
-  //   });
-  // }
-
-  updateLogin(event) {
-    let array = event.target.parentElement.childNodes;
-    this.setState({
-      login: {
-        username: array[0].value,
-        password: array[1].value,
-      },
-    });
-  }
+    updateLoginPassword(event) {
+      this.setState({
+        login: {
+          username: this.state.login.username,
+          password: event.target.value,
+        },
+      });
+    }
+  // ************************************* //
 // ************************************* //
 
 // BLOG FUNCTIONS //
@@ -208,6 +306,18 @@ class App extends Component {
   }
 // ************************************* //
 
+// NAVBAR FUNCTIONS //
+  openSoundcloud() {
+    if (document.getElementById('soundcloud-player').style.visibility == 'hidden') {
+      document.getElementById('soundcloud-player').style.visibility = 'visible';
+      document.getElementById('soundcloud-player').style.opacity = 1;
+    } else {
+      document.getElementById('soundcloud-player').style.opacity = 0;
+      document.getElementById('soundcloud-player').style.visibility = 'hidden';
+    }
+  }
+// ************************************* //
+
   render() {
     return (
       <div id="app-container">
@@ -220,27 +330,33 @@ class App extends Component {
           rel="stylesheet"
         />
 
-        <div id="app-left-sub-container">
+        <div id={this.state.sidebar}>
           <Sidebar
+            closeSidebar={event => this.closeSidebar(event)}
+
             loginUsername={this.state.login.username}
-            updateLogin={event => this.updateLogin(event)}
+            updateLoginUsername={event => this.updateLoginUsername(event)}
+            updateLoginPassword={event => this.updateLoginPassword(event)}
             loginPassword={this.state.login.password}
             login={event => this.login(event)}
             logout={event => this.logout(event)}
-
-            sidebarState={event => this.sidebarState(event)}
             isAuthenticated={this.state.isAuthenticated}
           />
         </div>
 
-        <div id="app-right-sub-container">
-          <Header />
-
-          <Navbar toggleSidebar={event => this.toggleSidebar(event)} />
-          {this.props.children && React.cloneElement(this.props.children, {
-            state: this.state,
-          })}
-          <Footer />
+        <div id={this.state.appcontainer}>
+            <Header />
+            <Navbar openSidebar={event => this.openSidebar(event)} openSoundcloud={event => this.openSoundcloud(event)}/>
+            {this.props.children && React.cloneElement(this.props.children, {
+              state: this.state,
+              updateProfileFirstName: (event => this.updateProfileFirstName(event)),
+              updateProfileLastName: (event => this.updateProfileLastName(event)),
+              updateProfileBio: (event => this.updateProfileBio(event)),
+              updateProfileEmail: (event => this.updateProfileEmail(event)),
+              updateProfile: (event => this.updateProfile(event)),
+              deleteBlogPost: (event => this.deleteBlogPost(event)),
+            })}
+            <Footer />
         </div>
       </div>
     );

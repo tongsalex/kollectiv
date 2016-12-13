@@ -10,18 +10,18 @@
 
 
 #navbar-container {
-
   width: 100vw;
   height: 80px;
 
   display: flex;
   justify-content: center;
+  flex-wrap: wrap;
   align-items: center;
-  box-sizing: border-box;
   }
 
   #navbar-button-container {
     width: 50vw;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -37,20 +37,28 @@
       align-items: center;
       text-decoration: none;
 
+      cursor: pointer;
       background-color: #FFFFFF;
       color: #111111;
     }
 
     .navbar-button:hover {
-      border: 2px solid black;
+      background-color: #111111;
+      color: #FFFFFF;
+
     }
 
     .navbar-button:focus {
       outline: none;
     }
 
+    #navbar-account-button {
+      visibility: hidden;
+    }
+
   #navbar-social-media-container {
-    width: 10vw;
+    width: 15vw;
+    height: 80px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -61,28 +69,34 @@
       height: 3.5vh;
       margin: 0 0.5vw;
       border-radius: 6px;
+      cursor: pointer;
+      transition: width 0.5s, height 0.5s;
     }
 
     .navbar-logos:hover {
-      filter: hue-rotate(90deg);
+      width: 6vh;
+      height: 6vh;
+      transition: width 0.5s, height 0.5s;
     }
 
-    /*#twitter {
-      border-radius: 5px;
-    }*/
+    #twitter {
+      filter: invert(100%);
+      border: 2px solid white;
+      box-sizing: border-box;
+    }
 
-  #navbar-search-container {
-    display: flex;
-    align-items: center;
-    width: 60px;
-    height: 50px;
-    border: solid black;
+    #facebook {
+      filter: invert(100%);
+    }
+
+    #soundcloud {
+      filter: invert(100%);
+      border: 2px solid white;
+      box-sizing: border-box;
+    }
+
+  #soundcloud-player {
+    width: 100vw;
+    transition: opacity 1s, visibility 1s;
   }
-
-    #navbar-search {
-      width: 30px;
-      height: 30px;
-      margin-left: 10px;
-    }
-
 
