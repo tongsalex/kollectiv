@@ -5,6 +5,7 @@
   width: 100vw;
   height: auto;
   background-color: #FFFFFF;
+
 }
 
   #sub-header-container {
@@ -17,8 +18,13 @@
     background-color: #FFFFFF;
     color: #111111;
     flex-wrap: wrap;
-
     border-bottom: 1px solid #DDDDDD;
+
+    /*background: linear-gradient(238deg);
+    background-image: url('index.jpg');
+    background-size: 200% 400%;
+    animation: movingGradient 90s ease infinite;
+*/
   }
 
     #header-title {

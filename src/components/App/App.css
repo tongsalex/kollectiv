@@ -4,19 +4,34 @@
   overflow: scroll;
 }
 
-#app-left-sub-container {
-  width: 0;
-}
+  #app-left-sub-container-hidden {
+    width: 0;
+    transition: width 1s;
+    z-index: -1;
+  }
 
-/*.closed {
-  width: 0;
-}
+  #app-left-sub-container-show {
+    width: 20vw;
+    transition: width 1s;
 
-.open {
-  width: 20vw;
-}*/
+  }
 
-#app-right-sub-container {
-  width: 100vw;
-  overflow-x: hidden;
-}
+  #app-right-sub-container {
+    width: 100vw;
+    overflow-x: hidden;
+    filter: none;
+    transition: 0.5s filter;
+  }
+
+   #app-right-sub-container-blur {
+    width: 100vw;
+    overflow-x: hidden;
+    filter: blur(5px);
+    transition: 0.5s filter;
+  }
+
+  @keyframes movingGradient {
+    0%{background-position:0% 86%}
+    100%{background-position:100% 15%}
+    /*100%{background-position:0% 86%}*/
+  }

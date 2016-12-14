@@ -1,21 +1,43 @@
 #login-container {
   width: 100%;
-  height: 200px;
+  height: auto;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: #FFFFFF;
+  /*background-color: #FFFFFF;*/
+  margin-top: 100px;
+
 }
 
-  #login-title {
-    width: 100%;
-    text-align: center;
-    font-family: 'Inconsolata';
-    color: #111111;
-  }
+    .login-inputs {
+      width: 60%;
+      font-family: 'Inconsolata';
+      /*border: 1px solid #DDDDDD;*/
+      border: none;
+      border-radius: 5px;
+      padding: 10px 0;
+      font-size: 25px;
+      margin: 20px 0;
+      text-align: center;
+    }
 
-  .login-input-containers {
-    width: 100%;
-    text-align: center;
-  }
+    #loginButton {
+      width: 60%;
+      height: 50px;
+      border-radius: 5px;
+      background-color: #111111;
+      color: #FFFFFF;
+      font-family: 'Inconsolata';
+      margin: 20px 0;
+    }
+
+    #loginButton:focus {
+      outline: none;
+    }
+
+    #loginButton:hover {
+      background-color: #FFFFFF;
+      color: #111111;
+      cursor: pointer;
+    }

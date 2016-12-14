@@ -28,7 +28,7 @@ CREATE TABLE events (
   event_id SERIAL PRIMARY KEY,
   title VARCHAR,
   description TEXT,
-  image TEXT,
+  image_url TEXT,
   artist_id INT REFERENCES artists ON DELETE CASCADE,
   date_created TIMESTAMP NOT NULL DEFAULT CURRENT_DATE
 );
@@ -40,6 +40,7 @@ CREATE TABLE songs_mixes (
   artist_id INT REFERENCES artists ON DELETE CASCADE,
   date_created TIMESTAMP NOT NULL DEFAULT CURRENT_DATE
 );
+
 
 
 

@@ -1,14 +1,13 @@
 const blogRoute = require('express').Router();
-const { getAllBlogPosts } = require('../../models/blog.js');
+const { getAllBlogPosts, getSingleBlogPost, editBlogPost } = require('../../models/blog.js');
 
 const sendJSONresp = (req, res) => res.json(res.blogPosts || []);
 
 blogRoute.route('/')
   .get(getAllBlogPosts, sendJSONresp);
 
-blogRoute.route('/restricted')
-  .post(getAllBlogPosts, sendJSONresp)
-  .put(sendJSONresp)
-  .delete(sendJSONresp);
+blogRoute.route('/:id')
+  .get(getSingleBlogPost, sendJSONresp)
+  .put(editBlogPost);
 
 module.exports = blogRoute;
