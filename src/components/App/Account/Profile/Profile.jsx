@@ -2,10 +2,6 @@ import React from 'react';
 import './Profile.css';
 import '../../../reset.css';
 
-// <input type="hidden" value={props.state.accountInfo.date} />
-// <input type="hidden" value={props.state.accountInfo.artist_id} />
-// <input type="hidden" value={props.state.accountInfo.username} />
-
 const Profile = props => (
   <div id="profile-container">
     <div className="profile-titles">username</div>

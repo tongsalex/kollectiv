@@ -11,8 +11,10 @@ const Footer = props => (
       <button id="newsletter-signup-button">ok</button>
     </div>
     <div id="sub-footer-container">
-      <div className="footer-text">©KANGAROU 2016</div>
-      <div className="footer-text">SITE BY AT</div>
+      <div id="sub-sub-footer-container">
+        <div className="footer-text">©kollektîv 2016</div>
+        <div className="footer-text">SITE BY alex tong</div>
+      </div>
     </div>
 
   </div>

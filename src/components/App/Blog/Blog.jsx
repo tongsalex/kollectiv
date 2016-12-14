@@ -9,6 +9,7 @@ const Blog = (props) => {
       <BlogPost
         key={blogPost.blog_post_id.toString()}
         blog_post_id={blogPost.blog_post_id}
+        content={blogPost.content}
         title={blogPost.title}
         subtitle={blogPost.subtitle}
         image_url={blogPost.image_url}

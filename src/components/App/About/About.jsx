@@ -5,7 +5,7 @@ import '../../reset.css';
 const About = props => (
   <div id="about-container">
     <div id="sub-about-container">
-    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi, laborum nisi ex. Non maxime nam rerum quos dignissimos labore, temporibus consequatur? Nulla magnam ipsam sapiente aliquam beatae assumenda illo! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus nulla, odit alias. Mollitia quo error nulla eum doloribus iusto. Eos totam placeat distinctio similique dolores ab pariatur reiciendis atque beatae? </p>
+    <p id="about-text"><span className="about-span">kollektîv</span> is a global community of creative <span className="about-span">artists</span>, with the intention of blogging about the unique fashion, music, and culture only found in <span className="about-span">New York City</span>, to the rest of the <span className="about-span">world</span>. We also throw <span className="about-span">sick</span> parties in the area.</p>
     </div>
   </div>
     );

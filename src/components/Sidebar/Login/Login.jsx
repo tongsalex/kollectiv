@@ -5,7 +5,6 @@ import '../../reset.css';
 
 const Login = props => (
   <div id="login-container">
-    <h1 id="login-title">login</h1>
 
     <input
       className="login-inputs"
@@ -27,7 +26,7 @@ const Login = props => (
       id="loginButton"
       onClick={props.login}
     >
-      Login!
+      login
     </button>
 
   </div>

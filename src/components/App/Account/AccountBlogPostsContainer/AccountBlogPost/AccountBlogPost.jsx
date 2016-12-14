@@ -1,10 +1,12 @@
 import React from 'react';
+import { Link } from 'react-router';
 import './AccountBlogPost.css';
 import '../../../../reset.css';
 
+// <Link to="/blogposts/{props.blog_post_id}" className="account-buttons">edit</Link>
+
 const AccountBlogPost = (props) => (
   <div id="accountBlogPost-container">
-    <div>{props.blog_post_id}</div>
     <div className="accountBlogPost-titles">blog post created on: </div>
       <div id="accountBlogPost-date-created">{props.date_created}</div>
     <div className="accountBlogPost-titles">title</div>
@@ -17,13 +19,7 @@ const AccountBlogPost = (props) => (
       <div className="accountBlogPost-inputs" id="accountBlogPost-image">{props.image_url}</div>
 
     <div className="accountBlogPost-button-containers">
-      <button
-        className="accountBlogPost-buttons"
-        id="accountBlogPost-update"
-        onClick={() => props.updateBlogPost()}
-      >update
-      </button>
-
+      <Link to={'/blogposts/'+props.blog_post_id} className="accountBlogPost-buttons">update</Link>
     </div>
 
     <div className="accountBlogPost-button-containers">

@@ -13,7 +13,19 @@ function getAllBlogPosts(req, res, next) {
     .catch(err => next(err));
 }
 
+function getSingleBlogPost(req, res, next) {
+  db.one(`SELECT *
+          FROM blog_posts
+          WHERE blog_post_id=$1;`, [req.params.id])
+    .then((blogPosts) => {
+      res.blogPosts = blogPosts;
+      next();
+    })
+    .catch(err => next(err));
+}
+
 module.exports = {
   getAllBlogPosts,
+  getSingleBlogPost,
 };
 

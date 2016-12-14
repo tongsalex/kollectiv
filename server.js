@@ -18,7 +18,7 @@ app.use(logger('dev'));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
 
-app.use(expressJWT({ secret: process.env.SECRET }).unless({ path: ['/favicon.ico', '/api/user/login', '/api/user/signup', '/api/blog', '/api/accountBlogPosts/alex'] }));
+app.use(expressJWT({ secret: process.env.SECRET }).unless({ path: ['/favicon.ico', '/api/user/login', '/api/user/signup', '/api/blog', /^\/api\/blog\/.*/] }));
 
 app.use('/api/user', userRoute);
 app.use('/api/blog', blogRoute);

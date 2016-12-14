@@ -1,18 +1,7 @@
-/*#sticky-container {
-  position: fixed;
-  width: 100vw;
-  left: 0;
-  top: 0;
-  z-index: 100;
-  border-top: 0;
-}
-*/
-
-
 #navbar-container {
   width: 100vw;
   height: 80px;
-
+  background-color: #FFFFFF;
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
@@ -53,7 +42,14 @@
     }
 
     #navbar-account-button {
+      background-color: #111111;
+      color: #FFFFFF;
       visibility: hidden;
+    }
+
+    #navbar-account-button:hover {
+      background-color: #FFFFFF;
+      color: #111111;
     }
 
   #navbar-social-media-container {

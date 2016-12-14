@@ -5,13 +5,31 @@
   display: flex;
   justify-content: center;
   align-items: center;
-   border-top: 1px solid #DDDDDD;
+  border-top: 1px solid #DDDDDD;
   border-bottom: 1px solid #DDDDDD;
 }
 
-#sub-about-container {
-  width: 60vw;
-  font-family: 'Inconsolata';
-  background-color: #FFFFFF;
-  color: #111111;
-}
+  #sub-about-container {
+    width: 60vw;
+    font-family: 'Inconsolata';
+    background-color: #FFFFFF;
+    color: #111111;
+  }
+
+  #about-text {
+    text-align: left;
+    font-size: 55px;
+  }
+
+  .about-span {
+    animation: colorchange 10s infinite;
+  }
+
+  @keyframes colorchange {
+    0% { color: white; }
+    5% { color: #0074D9; }
+    50% { color: #3D9970; }
+    70% { color: #F012BE; }
+    95% { color: #FF851B; }
+    100% { color: white; }
+  }

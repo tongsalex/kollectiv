@@ -26,6 +26,13 @@ class App extends Component {
 
       // GLOBAL DATA FROM DB //
       blogPosts: [],
+      detailedBlogPost: {
+        title: '',
+        subtitle: '',
+        content: '',
+        date_created: '',
+        image_url: '',
+      },
       // ******************** //
 
       // USER ACCOUNT DATA FROM DB //
@@ -192,7 +199,7 @@ class App extends Component {
   }
 // ************************************* //
 
-// SIDEBAR FUNCTIONS //
+// SIDEBAR LOGIN/LOGOUT FUNCTIONS //
   openSidebar() {
     this.setState({
       sidebar: 'app-left-sub-container-show',
@@ -255,6 +262,7 @@ class App extends Component {
     })
     .then(event => this.loadAccountInfo(event))
     .then(event => this.showAccountNavbar(event))
+    .then(event => this.closeSidebar(event))
     .catch(err => console.log(err));
   }
 
@@ -300,6 +308,23 @@ class App extends Component {
     .then((data) => {
       this.setState({
         blogPosts: data,
+      });
+    })
+    .catch(err => console.log(err));
+  }
+
+  getSingleBlogPost(params) {
+    fetch(`/api/blog/${params}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.currentToken,
+      },
+      method: 'GET',
+    })
+    .then(r => r.json())
+    .then((data) => {
+      this.setState({
+        detailedBlogPost: data,
       });
     })
     .catch(err => console.log(err));
@@ -355,6 +380,7 @@ class App extends Component {
               updateProfileEmail: (event => this.updateProfileEmail(event)),
               updateProfile: (event => this.updateProfile(event)),
               deleteBlogPost: (event => this.deleteBlogPost(event)),
+              getSingleBlogPost: (event => this.getSingleBlogPost(event)),
             })}
             <Footer />
         </div>
