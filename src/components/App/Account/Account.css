@@ -1,12 +1,10 @@
 #account-container {
   background-color: #FFFFFF;
   width: 100vw;
-  height: 500px;
+  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #DDDDDD;
-  border-bottom: 1px solid #DDDDDD;
 }
 
   #left-sub-account-container {
@@ -21,22 +19,28 @@
     align-content: space-around;
   }
 
+    .account-button-container {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+
     .account-buttons {
-      width: 60%;
-      height: 50px;
+      width: 100px;
+      height: 100px;
+      text-align: center;
+      border-radius: 100px;
       display: flex;
       justify-content: center;
       align-items: center;
-
-      background-color: #FFFFFF;
+      background-color: #111111;
       text-decoration: none;
-      color: #111111;
-      border: 1px solid #111111;
+      color: #FFFFFF;
     }
 
     .account-buttons:hover {
-      background-color: #111111;
-      color: #FFFFFF;
+      background-color: #FFFFFF;
+      color: #111111;
     }
 
     .account-buttons:focus {

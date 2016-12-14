@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import './Navbar.css';
 import '../reset.css';
 
@@ -11,6 +11,7 @@ const Navbar = props => (
       <Link to="/" className="navbar-button">blog</Link>
       <Link to="/about" className="navbar-button">about</Link>
       <Link to="/artists" className="navbar-button">artists</Link>
+      <Link to="/events" className="navbar-button">parties</Link>
       <Link to="/contact" className="navbar-button">contact</Link>
       <Link to="/account" className="navbar-button" id="navbar-account-button">my account</Link>
     </div>

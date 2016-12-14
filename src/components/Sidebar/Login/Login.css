@@ -5,15 +5,19 @@
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
-  background-color: #FFFFFF;
+  /*background-color: #FFFFFF;*/
   margin-top: 100px;
+
 }
 
     .login-inputs {
       width: 60%;
       font-family: 'Inconsolata';
-      border: 1px solid #DDDDDD;
-      font-size: 20px;
+      /*border: 1px solid #DDDDDD;*/
+      border: none;
+      border-radius: 5px;
+      padding: 10px 0;
+      font-size: 25px;
       margin: 20px 0;
       text-align: center;
     }
@@ -21,6 +25,7 @@
     #loginButton {
       width: 60%;
       height: 50px;
+      border-radius: 5px;
       background-color: #111111;
       color: #FFFFFF;
       font-family: 'Inconsolata';

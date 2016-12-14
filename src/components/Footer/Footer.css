@@ -3,6 +3,7 @@
   justify-content: center;
   flex-wrap: wrap;
   width: 100vw;
+  border-top: 1px solid #DDDDDD;
 }
 
   #newsletter-signup-container {
@@ -10,7 +11,7 @@
     justify-content: space-between;
     align-items: center;
     width: 35vw;
-    height: 150px;
+    height: 100px;
     background-color: #FFFFFF;
     color: #111111;
     font-family: 'Inconsolata';

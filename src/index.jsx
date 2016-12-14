@@ -6,6 +6,7 @@ import Blog from './components/App/Blog/Blog';
   import DetailedBlogPost from './components/App/Blog/DetailedBlogPost/DetailedBlogPost';
 import About from './components/App/About/About';
 import Artists from './components/App/Artists/Artists';
+import Events from './components/App/Events/Events';
 import Contact from './components/App/Contact/Contact';
 import Account from './components/App/Account/Account';
   import Profile from './components/App/Account/Profile/Profile';
@@ -20,6 +21,7 @@ ReactDOM.render((
       <Route path="/blog/:id" component={DetailedBlogPost} />
       <Route path="/about" component={About} />
       <Route path="/artists" component={Artists} />
+      <Route path="/events" component={Events} />
       <Route path="/contact" component={Contact} />
       <Route path="/account" component={Account}>
         <Route path="/profile" component={Profile} />

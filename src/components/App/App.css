@@ -29,3 +29,9 @@
     filter: blur(5px);
     transition: 0.5s filter;
   }
+
+  @keyframes movingGradient {
+    0%{background-position:0% 86%}
+    100%{background-position:100% 15%}
+    /*100%{background-position:0% 86%}*/
+  }

@@ -19,7 +19,7 @@ const AccountBlogPost = (props) => (
       <div className="accountBlogPost-inputs" id="accountBlogPost-image">{props.image_url}</div>
 
     <div className="accountBlogPost-button-containers">
-      <Link to={'/blogposts/'+props.blog_post_id} className="accountBlogPost-buttons">update</Link>
+      <Link to={'/blogposts/' + props.blog_post_id} className="accountBlogPost-buttons">update</Link>
     </div>
 
     <div className="accountBlogPost-button-containers">

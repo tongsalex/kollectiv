@@ -12,20 +12,22 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      // JWT //
-      currentToken: '',
-      // ******************** //
 
-      // LOGIN DATA //
+    // JWT //
+      currentToken: '',
+    // ******************** //
+
+    // LOGIN DATA //
       currentUser: null,
       login: {
         username: '',
         password: '',
       },
-      // *********** //
+    // *********** //
 
-      // GLOBAL DATA FROM DB //
+    // GLOBAL *PUBLIC* DATA //
       blogPosts: [],
+      events: [],
       detailedBlogPost: {
         title: '',
         subtitle: '',
@@ -33,9 +35,18 @@ class App extends Component {
         date_created: '',
         image_url: '',
       },
-      // ******************** //
+    // ******************** //
 
-      // USER ACCOUNT DATA FROM DB //
+    // EDIT BLOG POST //
+      editedBlogPost: {
+        title: 'null',
+        subtitle: 'null',
+        content: 'null',
+        image_url: 'null',
+      },
+    // ******************** //
+
+    // LOAD ALL USER ACCOUNT DATA //
       accountInfo: {
         first_name: '',
         last_name: '',
@@ -46,12 +57,21 @@ class App extends Component {
         username: null,
       },
       accountBlogPosts: [],
-      // ******************** //
+    // ******************** //
 
-      // sidebar show/hide states //
+    // NEW POST DATA TO DB //
+      newBlogPost: {
+        title: '',
+        subtitle: '',
+        content: '',
+        image_url: '',
+      },
+    // ******************** //
+
+    // SIDEBAR STATE //
       appcontainer: 'app-right-sub-container',
       sidebar: 'app-left-sub-container-hidden',
-      // ******************** //
+    // ******************** //
     };
   }
 // ************************************* //
@@ -59,6 +79,7 @@ class App extends Component {
 // GLOBAL FUNCTIONS //
   componentDidMount() {
     this.getAllBlogPosts();
+    this.getAllEvents();
     document.getElementById('soundcloud-player').style.visibility = 'hidden';
     document.getElementById('soundcloud-player').style.opacity = 0;
   }
@@ -106,6 +127,7 @@ class App extends Component {
       }),
     })
     .then(this.alertInfo('Account info edited!'))
+    .then(event => this.loadAccountInfo(event))
     .catch(err => console.log(err));
   }
 
@@ -195,8 +217,84 @@ class App extends Component {
       method: 'DELETE',
     })
     .then(event => this.getAccountBlogPosts(event))
+    .then(event => this.getAllBlogPosts(event))
     .catch(err => console.log(err));
   }
+
+  makeNewBlogPost() {
+    fetch('/api/accountBlogPosts/', {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.currentToken,
+      },
+      method: 'POST',
+      body: JSON.stringify({
+        title: this.state.newBlogPost.title,
+        subtitle: this.state.newBlogPost.subtitle,
+        content: this.state.newBlogPost.content,
+        image_url: this.state.newBlogPost.image_url,
+        artist_id: this.state.accountInfo.artist_id,
+      }),
+    })
+    .then(this.setState({
+      newBlogPost: {
+        title: '',
+        subtitle: '',
+        content: '',
+        image_url: '',
+      },
+    }))
+    .then(this.alertInfo('New blog post accepted!'))
+    .then(event => this.getAccountBlogPosts(event))
+    .then(event => this.getAllBlogPosts(event))
+    .catch(err => console.log(err));
+  }
+
+  // UPDATE INPUT FUNCTIONS //
+  updateNewBlogPostTitle(event) {
+    this.setState({
+      newBlogPost: {
+        title: event.target.value,
+        subtitle: this.state.newBlogPost.subtitle,
+        content: this.state.newBlogPost.content,
+        image_url: this.state.newBlogPost.image_url,
+      },
+    });
+  }
+
+  updateNewBlogPostSubtitle(event) {
+    this.setState({
+      newBlogPost: {
+        title: this.state.newBlogPost.title,
+        subtitle: event.target.value,
+        content: this.state.newBlogPost.content,
+        image_url: this.state.newBlogPost.image_url,
+      },
+    });
+  }
+
+  updateNewBlogPostContent(event) {
+    this.setState({
+      newBlogPost: {
+        title: this.state.newBlogPost.title,
+        subtitle: this.state.newBlogPost.subtitle,
+        content: event.target.value,
+        image_url: this.state.newBlogPost.image_url,
+      },
+    });
+  }
+
+  updateNewBlogPostImageUrl(event) {
+    this.setState({
+      newBlogPost: {
+        title: this.state.newBlogPost.title,
+        subtitle: this.state.newBlogPost.subtitle,
+        content: this.state.newBlogPost.content,
+        image_url: event.target.value,
+      },
+    });
+  }
+  // ************************************* //
 // ************************************* //
 
 // SIDEBAR LOGIN/LOGOUT FUNCTIONS //
@@ -329,6 +427,93 @@ class App extends Component {
     })
     .catch(err => console.log(err));
   }
+
+  getSingleBlogPostToEdit(params) {
+    fetch(`/api/blog/${params}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.currentToken,
+      },
+      method: 'GET',
+    })
+    .then(r => r.json())
+    .then((data) => {
+      this.setState({
+        editedBlogPost: data,
+      });
+    })
+    .catch(err => console.log(err));
+  }
+
+  updateBlogPost() {
+    fetch(`/api/blog/${this.state.editedBlogPost.blog_post_id}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + this.state.currentToken,
+      },
+      method: 'PUT',
+      body: JSON.stringify({
+        title: this.state.editedBlogPost.title,
+        subtitle: this.state.editedBlogPost.subtitle,
+        content: this.state.editedBlogPost.content,
+        image_url: this.state.editedBlogPost.image_url,
+      }),
+    })
+    .then(this.alertInfo('Blog post edited!'))
+    .then(event => this.getAccountBlogPosts(event))
+    .then(event => this.getAllBlogPosts(event))
+    .catch(err => console.log(err));
+  }
+
+// UPDATE INPUT FUNCTIONS //
+  updateEditedBlogPostTitle(event) {
+    this.setState({
+      editedBlogPost: {
+        blog_post_id: this.state.editedBlogPost.blog_post_id,
+        title: event.target.value,
+        subtitle: this.state.editedBlogPost.subtitle,
+        content: this.state.editedBlogPost.content,
+        image_url: this.state.editedBlogPost.image_url,
+      },
+    });
+  }
+
+  updateEditedBlogPostSubtitle(event) {
+    this.setState({
+      editedBlogPost: {
+        blog_post_id: this.state.editedBlogPost.blog_post_id,
+        title: this.state.editedBlogPost.title,
+        subtitle: event.target.value,
+        content: this.state.editedBlogPost.content,
+        image_url: this.state.editedBlogPost.image_url,
+      },
+    });
+  }
+
+  updateEditedBlogPostContent(event) {
+    this.setState({
+      editedBlogPost: {
+        blog_post_id: this.state.editedBlogPost.blog_post_id,
+        title: this.state.editedBlogPost.title,
+        subtitle: this.state.editedBlogPost.subtitle,
+        content: event.target.value,
+        image_url: this.state.editedBlogPost.image_url,
+      },
+    });
+  }
+
+  updateEditedBlogPostImageUrl(event) {
+    this.setState({
+      editedBlogPost: {
+        blog_post_id: this.state.editedBlogPost.blog_post_id,
+        title: this.state.editedBlogPost.title,
+        subtitle: this.state.editedBlogPost.subtitle,
+        content: this.state.editedBlogPost.content,
+        image_url: event.target.value,
+      },
+    });
+  }
+  // ************************************* //
 // ************************************* //
 
 // NAVBAR FUNCTIONS //
@@ -342,6 +527,25 @@ class App extends Component {
     }
   }
 // ************************************* //
+
+// EVENT FUNCTIONS //
+  getAllEvents() {
+      fetch('/api/events', {
+        headers: {
+          'content-type': 'application/json',
+        },
+        method: 'GET',
+      })
+      .then(r => r.json())
+      .then((data) => {
+        this.setState({
+          events: data,
+        });
+      })
+      .catch(err => console.log(err));
+  }
+// ************************************* //
+
 
   render() {
     return (
@@ -373,14 +577,34 @@ class App extends Component {
             <Header />
             <Navbar openSidebar={event => this.openSidebar(event)} openSoundcloud={event => this.openSoundcloud(event)}/>
             {this.props.children && React.cloneElement(this.props.children, {
+
+              // STATE
               state: this.state,
+
+              // UPDATE PROFILE
               updateProfileFirstName: (event => this.updateProfileFirstName(event)),
               updateProfileLastName: (event => this.updateProfileLastName(event)),
               updateProfileBio: (event => this.updateProfileBio(event)),
               updateProfileEmail: (event => this.updateProfileEmail(event)),
               updateProfile: (event => this.updateProfile(event)),
+
+              // BLOG POST FUNCTIONS
               deleteBlogPost: (event => this.deleteBlogPost(event)),
               getSingleBlogPost: (event => this.getSingleBlogPost(event)),
+              getSingleBlogPostToEdit: (event => this.getSingleBlogPostToEdit(event)),
+
+              updateEditedBlogPostTitle: (event => this.updateEditedBlogPostTitle(event)),
+              updateEditedBlogPostSubtitle: (event => this.updateEditedBlogPostSubtitle(event)),
+              updateEditedBlogPostContent: (event => this.updateEditedBlogPostContent(event)),
+              updateEditedBlogPostImageUrl: (event => this.updateEditedBlogPostImageUrl(event)),
+
+              // NEW BLOG POST FUNCTIONS
+              updateNewBlogPostTitle: (event => this.updateNewBlogPostTitle(event)),
+              updateNewBlogPostSubtitle: (event => this.updateNewBlogPostSubtitle(event)),
+              updateNewBlogPostContent: (event => this.updateNewBlogPostContent(event)),
+              updateNewBlogPostImageUrl: (event => this.updateNewBlogPostImageUrl(event)),
+              makeNewBlogPost: (event => this.makeNewBlogPost(event)),
+              updateBlogPost: (event => this.updateBlogPost(event)),
             })}
             <Footer />
         </div>

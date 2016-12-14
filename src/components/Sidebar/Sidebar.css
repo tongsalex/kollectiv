@@ -6,6 +6,11 @@
   align-content: center;
   align-items: center;
   flex-wrap: wrap;
+
+  background: linear-gradient(238deg);
+  background-image: url('index.jpg');
+  background-size: 1000% 100%;
+  animation: movingGradient 40s ease infinite;
 }
 
   #sidebar-button {

@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import './DetailedBlogPost.css';
 import '../../../reset.css';
+import { Link } from 'react-router'
+
 
 class DetailedBlogPost extends Component {
   componentDidMount() {
@@ -10,8 +12,10 @@ class DetailedBlogPost extends Component {
     return (
       <div id="detailedBlogPost-container">
 
+      <Link to="/" className="navbar-button">back</Link>
+
         <div id="detailedBlogPost-image-container">
-          <img src={this.props.state.detailedBlogPost.image_url} />
+          <img className="detailedBlogPost-image" src={this.props.state.detailedBlogPost.image_url} />
         </div>
 
         <h1 className="detailedBlogPost-text" id="detailedBlogPost-title">{this.props.state.detailedBlogPost.title}</h1>

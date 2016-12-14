@@ -22,7 +22,8 @@ function updateAccountInfo(req, res, next) {
 function getAccountBlogPosts(req, res, next) {
   db.any(`SELECT *
           FROM blog_posts
-          WHERE artist_id = $1`, [req.params.id])
+          WHERE artist_id = $1
+          ORDER BY date_created DESC`, [req.params.id])
     .then((accountBlogPosts) => {
       res.account = accountBlogPosts;
       next();

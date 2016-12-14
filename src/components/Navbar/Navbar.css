@@ -6,6 +6,8 @@
   justify-content: center;
   flex-wrap: wrap;
   align-items: center;
+  border-bottom: 1px solid #DDDDDD;
+
   }
 
   #navbar-button-container {
@@ -18,6 +20,7 @@
 
     .navbar-button {
       font-family: 'Inconsolata', monospace;
+      background-color: transparent;;
       box-sizing: border-box;
       width: 100px;
       height: 50px;
@@ -27,7 +30,7 @@
       text-decoration: none;
 
       cursor: pointer;
-      background-color: #FFFFFF;
+
       color: #111111;
     }
 
@@ -42,14 +45,17 @@
     }
 
     #navbar-account-button {
-      background-color: #111111;
       color: #FFFFFF;
       visibility: hidden;
+
+      background: linear-gradient(238deg, #243166, #cc1f0c);
+      background-size: 400% 400%;
+      animation: movingGradient 30s ease infinite;
     }
 
     #navbar-account-button:hover {
-      background-color: #FFFFFF;
-      color: #111111;
+      background-color: #111111;
+      color: #FFFFFF;
     }
 
   #navbar-social-media-container {

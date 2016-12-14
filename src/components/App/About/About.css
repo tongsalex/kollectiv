@@ -1,12 +1,10 @@
 #about-container {
   background-color: #FFFFFF;
   width: 100vw;
-  height: 500px;
+  height: 440px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid #DDDDDD;
-  border-bottom: 1px solid #DDDDDD;
 }
 
   #sub-about-container {
@@ -18,7 +16,7 @@
 
   #about-text {
     text-align: left;
-    font-size: 55px;
+    font-size: 50px;
   }
 
   .about-span {

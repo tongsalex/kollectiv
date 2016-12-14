@@ -21,7 +21,9 @@ const Profile = props => (
 
     <div className="profile-titles">Member since {props.state.accountInfo.date_created}</div>
 
-    <button onClick={props.updateProfile}>update</button>
+    <div id="profile-button-container">
+      <button id="profile-button" onClick={props.updateProfile}>update</button>
+    </div>
 
   </div>
     );

@@ -4,24 +4,19 @@ import '../../../reset.css';
 
 const NewBlogPost = props => (
   <div id="newblogpost-container">
-    <div className="newblogpost-titles">username</div>
-      <p>{props.state.currentUser}</p>
 
-    <div className="newblogpost-titles">first name</div>
-      <input className="newblogpost-inputs" onChange={props.updateProfileFirstName} value={props.state.accountInfo.first_name} />
 
-    <div className="newblogpost-titles">last name</div>
-      <input className="newblogpost-inputs" onChange={props.updateProfileLastName} value={props.state.accountInfo.last_name} />
+      <input className="newblogpost-inputs" onChange={props.updateNewBlogPostTitle} value={props.state.newBlogPost.title} placeholder="title" />
 
-    <div className="newblogpost-titles">email</div>
-      <input className="newblogpost-inputs" onChange={props.updateProfileEmail} value={props.state.accountInfo.email} />
+      <input className="newblogpost-inputs" onChange={props.updateNewBlogPostSubtitle} value={props.state.newBlogPost.subtitle} placeholder="subtitle" />
 
-    <div className="newblogpost-titles">bio</div>
-      <textarea id="newblogpost-bio-input" onChange={props.updateProfileBio} value={props.state.accountInfo.bio} />
+      <textarea className="newblogpost-inputs" id="newblogpost-content" onChange={props.updateNewBlogPostContent} value={props.state.newBlogPost.content} placeholder="content" />
 
-    <div className="newblogpost-titles">Member since {props.state.accountInfo.date_created}</div>
+      <textarea className="newblogpost-inputs" onChange={props.updateNewBlogPostImageUrl} value={props.state.newBlogPost.image_url} placeholder="image_url" />
 
-    <button onClick={props.updateProfile}>update</button>
+    <div id="newblogpost-button-container">
+      <button id="newblogpost-button" onClick={props.makeNewBlogPost}>submit</button>
+    </div>
 
   </div>
     );
