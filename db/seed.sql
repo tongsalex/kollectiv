@@ -1,3 +1,10 @@
+INSERT INTO artists(artist_id,username,password,first_name,last_name,image_url,bio,email)
+VALUES
+(1,E'alex',E'$2a$10$d0ssmdhtAwjzgjwUMIoNt.MgWakizCSVsdcKc2prCkGyKAtl9IkTC',E'Alex',E'Tong',E'https://scontent-iad3-1.cdninstagram.com/t51.2885-15/e15/10731421_277108345820300_399623112_n.jpg?ig_cache_key=ODI4NzUwMTMzNTM3MzAyNDYx.2',E'hello. i wuv my dog blue.',E'tongsalex@gmail.com'),
+(2,E'brendan',E'dfsfdsfdfd',NULL,NULL,E'https://scontent-iad3-1.xx.fbcdn.net/v/t31.0-8/10904068_10205437845083945_2751342768120206261_o.jpg?oh=ecdb1d9967ef25d63af2ae885b446bb1&oe=58F093F5',NULL,NULL),
+(3,E'trevor',E'dsfdsfsdfsfs',NULL,NULL,E'http://images.clipartpanda.com/elmo-face-clipart-13293_1348140085.gif',NULL,NULL),
+(4,E'irwin',E'dsfsfdsfdf',NULL,NULL,E'http://vignette1.wikia.nocookie.net/muppet/images/5/5f/OscarsClassicStare.jpg/revision/latest?cb=20120222062511',NULL,NULL);
+
 insert into blog_posts (title, subtitle, content, image_url, artist_id) values ('December 30th, The Law Return to NYC', 'Vivamus tortor. Duis mattis egesmpor convallis.', 'Vestibulum quam sapien, varius ut, blandit non, interdum in, ante. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Duis faucibus accumsan odio. Curabitur convallis.
 
 Duis consequat dui nec nisi volutpat eleifend. Donec ut dolor. Morbi vel lectus in quam fringilla rhoncus.
