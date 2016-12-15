@@ -50,10 +50,10 @@
     }
 
     .blogpost-button:hover {
-      background: linear-gradient(238deg);
+      /*background: linear-gradient(238deg);*/
       background-image: url('splatter.jpg');
-      background-size: 400% 400%;
-      animation: movingGradient 5s ease infinite;
+      background-size: 300% 300%;
+      /*animation: movingGradient 5s ease infinite;*/
       color: #111111;
     }
 

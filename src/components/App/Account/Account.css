@@ -41,8 +41,10 @@
     }
 
     .account-buttons:hover {
-      background-color: #2ECC40;
-      color: #111111;
+      background-image: url('splatter.jpg');
+      background-size: 300% 300%;
+color: #111111;
+cursor: pointer;
     }
 
     .account-buttons:focus {
