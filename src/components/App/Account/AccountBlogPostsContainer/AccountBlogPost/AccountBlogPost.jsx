@@ -8,15 +8,15 @@ import '../../../../reset.css';
 const AccountBlogPost = (props) => (
   <div id="accountBlogPost-container">
     <div className="accountBlogPost-titles">blog post created on: </div>
-      <div id="accountBlogPost-date-created">{props.date_created}</div>
+      <h1 id="accountBlogPost-date-created">{props.date_created}</h1>
     <div className="accountBlogPost-titles">title</div>
-      <div className="accountBlogPost-inputs" id="accountBlogPost-title">{props.title}</div>
+      <h1 className="accountBlogPost-inputs" id="accountBlogPost-title">{props.title}</h1>
     <div className="accountBlogPost-titles">subtitle</div>
-      <div className="accountBlogPost-inputs" id="accountBlogPost-sub-title">{props.subtitle}</div>
+      <h1 className="accountBlogPost-inputs" id="accountBlogPost-sub-title">{props.subtitle}</h1>
     <div className="accountBlogPost-titles">content</div>
-      <div className="accountBlogPost-inputs" id="accountBlogPost-content">{props.content}</div>
+      <h1 className="accountBlogPost-inputs" id="accountBlogPost-content">{props.content}</h1>
     <div className="accountBlogPost-titles">image url</div>
-      <div className="accountBlogPost-inputs" id="accountBlogPost-image">{props.image_url}</div>
+      <h1 className="accountBlogPost-inputs" id="accountBlogPost-image">{props.image_url}</h1>
 
     <div className="accountBlogPost-button-containers">
       <Link to={'/blogposts/' + props.blog_post_id} className="accountBlogPost-buttons">update</Link>

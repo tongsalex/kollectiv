@@ -9,6 +9,7 @@ CREATE TABLE artists (
   password VARCHAR NOT NULL,
   first_name VARCHAR,
   last_name VARCHAR,
+  image_url TEXT,
   bio TEXT,
   email VARCHAR UNIQUE,
   date_created TIMESTAMP DEFAULT CURRENT_DATE

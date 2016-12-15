@@ -26,8 +26,10 @@
     }
 
     .account-buttons {
-      width: 100px;
-      height: 100px;
+      width: 130px;
+      height: 130px;
+      font-size: 25px;
+      padding: 20px;
       text-align: center;
       border-radius: 100px;
       display: flex;
@@ -39,7 +41,7 @@
     }
 
     .account-buttons:hover {
-      background-color: #FFFFFF;
+      background-color: #2ECC40;
       color: #111111;
     }
 
