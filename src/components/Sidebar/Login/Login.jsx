@@ -5,6 +5,7 @@ import '../../reset.css';
 
 const Login = props => (
   <div id="login-container">
+
     <input
       className="login-inputs"
       type="text"
@@ -25,14 +26,7 @@ const Login = props => (
       id="loginButton"
       onClick={props.login}
     >
-      Login!
-    </button>
-
-    <button
-      id="loginButton"
-      onClick={props.logout}
-    >
-      Logout!
+      login
     </button>
 
   </div>

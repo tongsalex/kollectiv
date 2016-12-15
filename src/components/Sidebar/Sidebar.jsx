@@ -5,14 +5,18 @@ import '../reset.css';
 
 const Sidebar = props => (
   <div id="sidebar-container">
+
+    <button id="sidebar-button" onClick={props.closeSidebar}>X</button>
+
     <Login
       loginUsername={props.loginUsername}
-      updateLoginUsername={props.updateLoginUsername}
       loginPassword={props.loginPassword}
+      updateLoginUsername={props.updateLoginUsername}
       updateLoginPassword={props.updateLoginPassword}
       login={props.login}
       logout={props.logout}
     />
+
   </div>
     );
 
