@@ -20,12 +20,14 @@ class EditBlogPost extends Component {
           <input className="editblogpost-inputs" onChange={this.props.updateEditedBlogPostSubtitle} value={this.props.state.editedBlogPost.subtitle} />
 
         <div className="editblogpost-titles">content</div>
-          <textarea className="editblogpost-inputs" onChange={this.props.updateEditedBlogPostContent} value={this.props.state.editedBlogPost.content} />
+          <textarea className="editblogpost-inputs" id="editblogpost-content" onChange={this.props.updateEditedBlogPostContent} value={this.props.state.editedBlogPost.content} />
 
         <div className="editblogpost-titles">image url</div>
           <textarea id="editblogpost-bio-input" onChange={this.props.updateEditedBlogPostImageUrl} value={this.props.state.editedBlogPost.image_url} />
 
-        <button onClick={this.props.updateBlogPost} >update</button>
+        <div id="editblogpost-button-container">
+          <button id="editblogpost-button" onClick={this.props.updateBlogPost} >update</button>
+        </div>
 
       </div>
     );

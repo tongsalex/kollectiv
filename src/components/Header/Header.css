@@ -19,7 +19,6 @@
     color: #111111;
     flex-wrap: wrap;
     border-bottom: 1px solid #DDDDDD;
-
     /*background: linear-gradient(238deg);
     background-image: url('index.jpg');
     background-size: 200% 400%;
@@ -34,7 +33,15 @@
       height: 60px;
       text-align: center;
       margin: 0;
+      /*animation: changeFont 60s ease infinite;*/
     }
+
+    /*@keyframes changeFont {
+    0%{font-family: 'Signerica_Thin'}
+    50%{font-family: 'Inconsolata'}
+    55%{font-family: 'Signerica_Thin'}
+    100%{font-family: 'Signerica_Thin'}
+    }*/
 
     #header-subtitle {
       font-family: 'Times';

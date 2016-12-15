@@ -28,6 +28,7 @@ class App extends Component {
     // GLOBAL *PUBLIC* DATA //
       blogPosts: [],
       events: [],
+      artists: [],
       detailedBlogPost: {
         title: '',
         subtitle: '',
@@ -80,6 +81,7 @@ class App extends Component {
   componentDidMount() {
     this.getAllBlogPosts();
     this.getAllEvents();
+    this.getAllArtists();
     document.getElementById('soundcloud-player').style.visibility = 'hidden';
     document.getElementById('soundcloud-player').style.opacity = 0;
   }
@@ -465,6 +467,24 @@ class App extends Component {
     .catch(err => console.log(err));
   }
 
+// ARTIST FUNCTIONS //
+  getAllArtists() {
+    fetch('/api/artists', {
+      headers: {
+        'content-type': 'application/json',
+      },
+      method: 'GET',
+    })
+    .then(r => r.json())
+    .then((data) => {
+      this.setState({
+        artists: data,
+      });
+    })
+    .catch(err => console.log(err));
+  }
+// ************************************* //
+
 // UPDATE INPUT FUNCTIONS //
   updateEditedBlogPostTitle(event) {
     this.setState({
@@ -515,6 +535,8 @@ class App extends Component {
   }
   // ************************************* //
 // ************************************* //
+
+
 
 // NAVBAR FUNCTIONS //
   openSoundcloud() {

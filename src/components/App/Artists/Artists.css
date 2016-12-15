@@ -1,16 +1,9 @@
 #artists-container {
   background-color: #FFFFFF;
   width: 100vw;
-  height: 500px;
+  height: 445px;
   display: flex;
-  justify-content: center;
   align-items: center;
+  overflow-x: scroll;
 }
 
-#sub-artists-container {
-  width: 60vw;
-  font-family: 'Inconsolata';
-  background-color: #FFFFFF;
-  color: #111111;
-  text-align: center;
-}

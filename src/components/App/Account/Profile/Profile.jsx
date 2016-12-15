@@ -5,7 +5,7 @@ import '../../../reset.css';
 const Profile = props => (
   <div id="profile-container">
     <div className="profile-titles">username</div>
-      <p>{props.state.currentUser}</p>
+      <p id="profile-name">{props.state.currentUser}</p>
 
     <div className="profile-titles">first name</div>
       <input className="profile-inputs" onChange={props.updateProfileFirstName} value={props.state.accountInfo.first_name} />
@@ -19,7 +19,7 @@ const Profile = props => (
     <div className="profile-titles">bio</div>
       <textarea id="profile-bio-input" onChange={props.updateProfileBio} value={props.state.accountInfo.bio} />
 
-    <div className="profile-titles">Member since {props.state.accountInfo.date_created}</div>
+    <div className="profile-titles">Member since {props.state.accountInfo.date}</div>
 
     <div id="profile-button-container">
       <button id="profile-button" onClick={props.updateProfile}>update</button>

@@ -1,13 +1,25 @@
 import React from 'react';
 import './Artists.css';
 import '../../reset.css';
+import ArtistPost from './ArtistPost/ArtistPost';
 
-const Artists = props => (
-  <div id="artists-container">
-    <div id="sub-artists-container">
-      <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Adipisci animi, laborum nisi ex. Non maxime nam rerum quos dignissimos labore, temporibus consequatur? Nulla magnam ipsam sapiente aliquam beatae assumenda illo! Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloribus nulla, odit alias. Mollitia quo error nulla eum doloribus iusto. Eos totam placeat distinctio similique dolores ab pariatur reiciendis atque beatae? </p>
-    </div>
-  </div>
+const Artists = (props) => {
+  const artists = props.state.artists.map((artist) => {
+    return (
+      <ArtistPost
+        key={artist.artist_id.toString()}
+        username={artist.username}
+        image_url={artist.image_url}
+      />
     );
+  });
+
+  return (
+    <div id="artists-container">
+      {artists}
+    </div>
+  );
+};
+
 
 export default Artists;
