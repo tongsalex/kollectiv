@@ -30,7 +30,7 @@ module.exports = {
       inject: false,
       meta: {
         description: 'New York City culture, music, parties and fashion.',
-        image: 'http://i.imgur.com/ijAiMSV.png'
+        og:image: 'http://i.imgur.com/ijAiMSV.png'
       },
       template: require('html-webpack-template'),
       appMountId: 'root-container'
