@@ -28,6 +28,10 @@ module.exports = {
       title: 'thecollektive',
       xhtml: true,
       inject: false,
+      meta: {
+        description: 'New York City culture, music, parties and fashion.',
+        image: 'http://i.imgur.com/ijAiMSV.png'
+      },
       template: require('html-webpack-template'),
       appMountId: 'root-container'
     }),
