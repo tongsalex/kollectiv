@@ -1,4 +1,5 @@
-require('dotenv').config({ silent: true });
+const isDev = !('NODE_ENV' in process.env) && require('dotenv').config() && true;
+
 const express = require('express');
 const logger = require('morgan');
 const path = require('path');
@@ -16,11 +17,11 @@ const accountBlogPosts = require('./routes/api/accountBlogPosts');
 const app = express();
 const PORT = process.argv[2] || process.env.PORT || 3000;
 
-app.use(logger('dev'));
+app.use(logger(isDev ? 'dev' : 'common'));
 app.use(express.static(path.join(__dirname, 'dist')));
 app.use(bodyParser.json());
 
-app.use(expressJWT({ secret: process.env.SECRET }).unless({ path: ['/favicon.ico', '/api/user/login', '/api/user/signup', '/api/blog', '/api/artists', '/api/events', /^\/api\/blog\/.*/] }));
+app.use(expressJWT({ secret: process.env.SECRET }).unless({ path: ['/', '/favicon.ico', '/api/user/login', '/api/user/signup', '/api/blog', '/api/artists', '/api/events', /^\/api\/blog\/.*/] }));
 
 app.use('/api/user', userRoute);
 app.use('/api/blog', blogRoute);

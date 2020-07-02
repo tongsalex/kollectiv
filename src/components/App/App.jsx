@@ -572,6 +572,10 @@ class App extends Component {
   render() {
     return (
       <div id="app-container">
+
+        <meta property="og:image" content="http://i.imgur.com/ijAiMSV.png" />
+
+
         <link
           href="https://fonts.googleapis.com/css?family=Inconsolata"
           rel="stylesheet"
