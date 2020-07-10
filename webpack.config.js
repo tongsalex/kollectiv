@@ -25,7 +25,7 @@ module.exports = {
   },
   plugins: [
     new HtmlWebpackPlugin({
-      title: 'kollectiv',
+      title: 'thecollektive',
       xhtml: true,
       inject: false,
       meta: {
