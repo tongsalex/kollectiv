@@ -16,7 +16,6 @@ For some time now, I've been wanting to start a musical collective/brand of NYC 
 2. In your terminal, run "npm install"
 3. In your terminal, run "npm start" to run the backend server.
     - You will need to create a .env file in the main directory.
-4. 
 
 ### User Story
 On the main website, users will be able to view the website's blog content, events being thrown by the entire collektive, and links to artist profiles. On the second level within each artist profile, users will be able to view the artist's individual contributions to the larger blog, their own personal gigs that are unaffiliated/unrelated to the collektive, a short bio, and original tracks and mixes that the artist has chosen to share. Contact info will also be allowed here.
