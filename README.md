@@ -1,12 +1,12 @@
-# thecollektive
+# kollectiv
 ## Concept
-For some time now, I've been wanting to start a musical collective/brand of NYC DJs/Music Producers with a common interest in sharing their work and throwing recurring awesome underground dance parties in the NYC area without the superficial environment and high fees involved at local clubs. Just great music, good parties, a thriving bumping community, and the chance for local artists to share their work/gigs with local music lovers desperate to find new music and a great time. In addition to sharing their work/gigs, I also wanted to allow each artist to have their own personal blog which would feed into a larger blog for the entire website which could be about almost anything but primarily focus on music, whether they be album reviews, artist recommendations, reviews of the vast collection of venues in NYC, djing tips, production tips, anything related to music!!!
+For some time now, I've been wanting to start a musical collective/brand of NYC DJs/Music Producers with a common interest in sharing their work and throwing recurring events in the NYC area. Just great music, a thriving community, and the chance for local artists to share their work/gigs with local music lovers desperate to find new music. In addition to sharing their work/gigs, I also wanted to allow each artist to have their own personal blog which would feed into a larger blog for the entire website which could be about almost anything but primarily focus on music, whether they be album reviews, artist recommendations, reviews of the vast collection of venues in NYC, djing tips, production tips, anything related to music!!!
 
 ## Technology
 - HTML
 - CSS
 - Javascript
-- PSQL
+- PostgresQL
 - Node.js
 - Express
 - React
